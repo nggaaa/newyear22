@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Happy New Year 2022</title>
+  </head>
+  <body
+    style="font-family: 'Nunito', sans-serif; background-color: #f8f9fa"
+    class="bg-light"
+  >
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <h1 class="fw-bold display-1 mt-5" id="second">00</h1>
+        <h6 class="fw-bold display-6 mt-2">Seconds</h6>
+      </div>
+    </div>
+    <script>
+      var countDate = new Date("Jan 1, 2022 00:00:00").getTime();
+      function newYear() {
+        var now = new Date().getTime();
+        gap = countDate - now;
+
+        var second = 1000;
+        var minute = second * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+
+        var d = Math.floor(gap / day);
+        var h = Math.floor((gap % day) / hour);
+        var m = Math.floor((gap % hour) / minute);
+        var s = Math.floor((gap % minute) / second);
+
+        document.getElementById("second").innerText = s;
+
+        if (!(d === 0 && h === 0 && m === 0)) {
+          window.location.href = "/index.html";
+        }
+
+        if (d === 0 && h === 0 && m === 0 && s <= 0) {
+          window.location.href = "/newyear.html";
+        }
+      }
+
+      setInterval(function () {
+        newYear();
+      }, 1000);
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+      window.addEventListener("load", window.scrollTo(0, 0));
+    </script>
+  </body>
+</html>
